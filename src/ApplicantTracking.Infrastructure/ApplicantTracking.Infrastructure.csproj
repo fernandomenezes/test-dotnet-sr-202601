@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="14.0.0" />
+    <PackageReference Include="System.Text.Json" Version="10.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicantTracking.Domain\ApplicantTracking.Domain.csproj" />
+    <ProjectReference Include="..\ApplicantTracking.Application\ApplicantTracking.Application.csproj" />
+  </ItemGroup>
+
 </Project>

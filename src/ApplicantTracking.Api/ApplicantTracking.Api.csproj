@@ -7,8 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="14.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.20" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicantTracking.Application\ApplicantTracking.Application.csproj" />
+    <ProjectReference Include="..\ApplicantTracking.Infrastructure\ApplicantTracking.Infrastructure.csproj" />
+    <ProjectReference Include="..\ApplicantTracking.Domain\ApplicantTracking.Domain.csproj" />
   </ItemGroup>
 
 </Project>
