@@ -1,10 +1,12 @@
+using ApplicantTracking.Application.Commands;
 using ApplicantTracking.Application.DTOs;
 using ApplicantTracking.Domain.Entities;
-using ApplicantTracking.Domain.Enums;
-using ApplicantTracking.Domain.Events;
+using ApplicantTracking.Domain.Enumerators;
 using ApplicantTracking.Domain.Interfaces;
 using MediatR;
 using System.Text.Json;
+
+namespace ApplicantTracking.Application.Commands.Handlers;
 
 public class CreateCandidateHandler : IRequestHandler<CreateCandidateCommand, CandidateDto>
 {
@@ -17,16 +19,17 @@ public class CreateCandidateHandler : IRequestHandler<CreateCandidateCommand, Ca
 
     public async Task<CandidateDto> Handle(CreateCandidateCommand cmd, CancellationToken ct)
     {
-        var entity = Candidate.Create(cmd.Name, cmd.Surname, cmd.Birthdate, cmd.Email);
-        await _repo.AddAsync(entity, ct);
+        var candidate = Candidate.Create(cmd.Name, cmd.Surname, cmd.Birthdate, cmd.Email);
+        await _repo.AddAsync(candidate, ct);
 
-        // Evento → Timeline
-        var evt = new CandidateChangedEvent(TimelineTypes.CandidateCreated, entity.IdCandidate, null, entity);
-        var newJson = JsonSerializer.Serialize(entity);
-        await _timeline.AddAsync(Timeline.Create((byte)evt.Type, evt.CandidateId, null, newJson), ct);
+        var json = JsonSerializer.Serialize(candidate);
+        await _timeline.AddAsync(
+            Timeline.Create((byte)TimelineTypes.CandidateCreated, candidate.IdCandidate, null, json),
+            ct
+        );
 
         await _uow.SaveChangesAsync(ct);
 
-        return new CandidateDto(entity.IdCandidate, entity.Name, entity.Surname, entity.Birthdate, entity.Email);
+        return new CandidateDto(candidate.IdCandidate, candidate.Name, candidate.Surname, candidate.Birthdate, candidate.Email);
     }
 }
