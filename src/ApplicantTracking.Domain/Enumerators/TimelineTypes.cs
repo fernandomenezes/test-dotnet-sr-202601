@@ -2,8 +2,8 @@
 {
     public enum TimelineTypes : byte
     {
-        Create = 1,
-        Update = 2,
-        Delete = 3
+        CandidateCreated = 1,
+        CandidateUpdated = 2,
+        CandidateDeleted = 3
     }
 }
