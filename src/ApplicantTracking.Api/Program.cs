@@ -8,8 +8,15 @@ using Microsoft.OpenApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Configuração do DbContext
-builder.Services.AddDbContext<AppDbContext>(opt =>
-    opt.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("SqlServer"),
+        sqlOptions => sqlOptions.EnableRetryOnFailure(
+            maxRetryCount: 5,              // número máximo de tentativas
+            maxRetryDelay: TimeSpan.FromSeconds(10), // tempo máximo entre tentativas
+            errorNumbersToAdd: null        // erros adicionais que podem disparar retry
+        )
+    ));
 
 // Registro dos repositórios e UoW
 builder.Services.AddScoped<ICandidateRepository, CandidateRepository>();
