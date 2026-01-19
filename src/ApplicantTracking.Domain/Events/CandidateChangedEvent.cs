@@ -1,4 +1,3 @@
-// Domain/Events/CandidateChangedEvent.cs
 using ApplicantTracking.Domain.Entities;
 using ApplicantTracking.Domain.Enumerators;
 

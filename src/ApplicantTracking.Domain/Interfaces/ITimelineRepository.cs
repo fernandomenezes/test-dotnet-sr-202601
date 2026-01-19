@@ -1,4 +1,3 @@
-// Domain/Interfaces/ITimelineRepository.cs
 using ApplicantTracking.Domain.Entities;
 
 namespace ApplicantTracking.Domain.Interfaces;

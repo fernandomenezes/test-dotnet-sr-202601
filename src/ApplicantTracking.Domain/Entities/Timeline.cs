@@ -1,4 +1,3 @@
-// Domain/Entities/Timeline.cs
 namespace ApplicantTracking.Domain.Entities;
 
 public class Timeline

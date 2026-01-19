@@ -1,4 +1,3 @@
-// Domain/Entities/Candidate.cs
 namespace ApplicantTracking.Domain.Entities;
 
 public class Candidate

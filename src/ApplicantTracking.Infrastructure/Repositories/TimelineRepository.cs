@@ -1,4 +1,3 @@
-// Infrastructure/Repositories/TimelineRepository.cs
 using ApplicantTracking.Domain.Entities;
 using ApplicantTracking.Domain.Interfaces;
 using ApplicantTracking.Infrastructure.Persistence;

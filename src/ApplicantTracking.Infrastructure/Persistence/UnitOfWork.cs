@@ -1,4 +1,3 @@
-// Infrastructure/Persistence/UnitOfWork.cs
 using ApplicantTracking.Domain.Interfaces;
 
 namespace ApplicantTracking.Infrastructure.Persistence;

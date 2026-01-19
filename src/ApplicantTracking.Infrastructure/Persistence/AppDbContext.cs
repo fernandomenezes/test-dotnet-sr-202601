@@ -1,4 +1,3 @@
-// Infrastructure/Persistence/AppDbContext.cs
 using ApplicantTracking.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,4 +1,3 @@
-// Domain/Interfaces/IUnitOfWork.cs
 namespace ApplicantTracking.Domain.Interfaces;
 
 public interface IUnitOfWork
